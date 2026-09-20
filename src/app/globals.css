@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — derivados diretamente da logo da Nexa Agency:
+ * fundo preto-azulado, monograma em gradiente ciano -> azul.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-void: #01040b;
+  --color-abyss: #060c1a;
+  --color-elevated: #0b1324;
+
+  --color-brand: #0b5bff;
+  --color-brand-deep: #0736a8;
+  --color-cyan: #22d9ff;
+
+  --color-ink: #f2f6ff;
+  --color-muted: #94a3bd;
+  --color-hairline: rgba(255, 255, 255, 0.09);
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  /* Preenchimentos (botoes, selos): pode escurecer no fim, ganha volume. */
+  --gradient-brand: linear-gradient(135deg, #22d9ff 0%, #0b5bff 55%, #0736a8 100%);
+  /* Texto: precisa manter contraste no fundo escuro ate a ultima letra. */
+  --gradient-text: linear-gradient(115deg, #5ee4ff 0%, #2f86ff 55%, #2d7bff 100%);
+  --shell-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --shell-gutter: 2rem;
+  }
+}
+
+* {
+  border-color: var(--color-hairline);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa o header fixo quando um link de ancora leva a uma secao. */
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  /* Nenhuma secao pode empurrar a pagina para os lados. */
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-brand) 55%, transparent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ *
+ * Utilitarios reutilizados pelas secoes
+ * ------------------------------------------------------------------ */
+
+/** Largura maxima e respiro lateral padrao de toda secao. */
+@utility shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: var(--shell-gutter);
+}
+
+/** Card de vidro: base visual de quase todo bloco do site. */
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--color-hairline);
+  backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+}
+
+/** Texto preenchido com o gradiente do monograma. */
+@utility text-gradient {
+  background-image: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  /* Evita que descendentes (g, y, p) sejam cortados pelo clip. */
+  padding-bottom: 0.08em;
+}
+
+/** Fundo preenchido com o gradiente da marca. */
+@utility bg-gradient-brand {
+  background-image: var(--gradient-brand);
+}
+
+/** Malha sutil de linhas, com esmaecimento radial nas bordas. */
+@utility grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+}
+
+/** Borda em gradiente de 1px, sem pseudo-elemento extra. */
+@utility border-gradient {
+  border: 1px solid transparent;
+  background-image:
+    linear-gradient(var(--color-abyss), var(--color-abyss)), var(--gradient-brand);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* ------------------------------------------------------------------ *
+ * Marquee infinito (faixa de tecnologias)
+ * ------------------------------------------------------------------ */
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* O conteudo e duplicado, entao -50% reinicia sem emenda visivel. */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 38s linear infinite;
+  will-change: transform;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ------------------------------------------------------------------ *
+ * Respeito a preferencia de menos movimento
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
