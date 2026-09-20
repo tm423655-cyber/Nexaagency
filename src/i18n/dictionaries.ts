@@ -38,11 +38,6 @@ const pt = {
     secondaryCta: 'Ver projetos',
     whatsappMessage:
       'Olá! Vim pelo site da Nexa Agency e quero falar sobre um projeto.',
-    stats: [
-      { value: 120, suffix: '+', label: 'Projetos entregues' },
-      { value: 98, suffix: '%', label: 'Clientes satisfeitos' },
-      { value: 21, suffix: ' dias', label: 'Entrega média' },
-    ],
     sideCard: {
       label: 'Disponível para novos projetos',
       title: 'Atendimento remoto',
@@ -163,74 +158,44 @@ const pt = {
   work: {
     eyebrow: 'Projetos',
     title: 'Trabalhos que falam por si',
-    description:
-      'Uma amostra do tipo de projeto que entregamos. Quer ver os cases completos com números? É só pedir.',
-    resultLabel: 'Resultado',
+    description: 'Confira um projeto real, desenvolvido e publicado pela Nexa Agency.',
+    visitLabel: 'Visitar site',
     cta: 'Quero um projeto assim',
     items: [
       {
-        name: 'Órbita Studio',
-        category: 'Site institucional',
-        result: '+68% de tempo na página',
-      },
-      {
-        name: 'Vetor Contábil',
-        category: 'Landing page',
-        result: '3,4x mais leads por mês',
-      },
-      {
-        name: 'Casa Prisma',
-        category: 'Loja virtual',
-        result: '+42% de conversão no checkout',
-      },
-      {
-        name: 'Meridiano CRM',
-        category: 'Sistema web',
-        result: '12h/semana economizadas',
-      },
-      {
-        name: 'Nível Fitness',
-        category: 'App + integrações',
-        result: '9 mil agendamentos no 1º ano',
-      },
-      {
-        name: 'Atlas Log',
-        category: 'Portal do cliente',
-        result: '−55% de chamados no suporte',
+        name: 'Thaís Mello Decorações',
+        category: 'Decoração de interiores',
+        description: 'Site para divulgar o trabalho e atrair novos clientes.',
+        url: 'https://thaismellodecoracoes.vercel.app/',
       },
     ],
-    disclaimer:
-      'Projetos ilustrativos exibidos como exemplo do nosso padrão de entrega.',
   },
 
   pricing: {
     eyebrow: 'Planos',
     title: 'Preço transparente, sem letra miúda',
     description:
-      'Valores de referência para você se planejar. O orçamento final sai depois da conversa de descoberta — e não muda no meio do caminho.',
+      'Cada projeto é único, por isso o valor é sempre calculado sob consulta — sem tabela fixa, sem surpresa no meio do caminho.',
     popular: 'Mais escolhido',
-    from: 'a partir de',
     custom: 'sob consulta',
     cta: 'Quero este plano',
     whatsappMessage: 'Olá! Tenho interesse no plano',
-    note: 'Parcelamos em até 12x. Domínio e hospedagem do primeiro ano inclusos nos planos Essencial e Profissional.',
+    note: 'Parcelamos em até 12x. Publicamos com hospedagem gratuita; domínio próprio e hospedagem premium são opcionais, cobrados à parte.',
     plans: [
       {
         name: 'Essencial',
-        price: 'R$ 2.900',
         tagline: 'Para quem precisa existir bem na internet, rápido.',
         features: [
           'Site de até 5 páginas',
           'Design exclusivo e responsivo',
           'Otimização básica de SEO',
           'Formulário e WhatsApp integrados',
-          'Publicação e domínio configurados',
+          'Publicação com hospedagem gratuita',
           '30 dias de suporte',
         ],
       },
       {
         name: 'Profissional',
-        price: 'R$ 6.900',
         tagline: 'Para negócios que usam o site como canal de vendas.',
         features: [
           'Site ou loja com páginas ilimitadas',
@@ -244,7 +209,6 @@ const pt = {
       },
       {
         name: 'Sob medida',
-        price: null,
         tagline: 'Para sistemas, plataformas e projetos de longo prazo.',
         features: [
           'Sistema web ou plataforma completa',
@@ -258,31 +222,6 @@ const pt = {
     ],
   },
 
-  testimonials: {
-    eyebrow: 'Depoimentos',
-    title: 'O que os clientes dizem',
-    items: [
-      {
-        quote:
-          'Entregaram em três semanas o que outra agência levou seis meses para não entregar. O site ficou impecável e o suporte é imediato.',
-        author: 'Renata Alves',
-        role: 'Sócia, clínica odontológica',
-      },
-      {
-        quote:
-          'A landing page pagou o investimento no primeiro mês. Hoje é de onde vem a maior parte dos nossos orçamentos.',
-        author: 'Diego Martins',
-        role: 'Diretor comercial, indústria',
-      },
-      {
-        quote:
-          'Eles entenderam o nosso processo antes de programar qualquer coisa. O sistema encaixou como uma luva no dia a dia da equipe.',
-        author: 'Camila Souza',
-        role: 'Gerente de operações, logística',
-      },
-    ],
-  },
-
   faq: {
     eyebrow: 'Dúvidas',
     title: 'Perguntas frequentes',
@@ -291,22 +230,22 @@ const pt = {
       {
         question: 'Quanto tempo leva para o site ficar pronto?',
         answer:
-          'Uma landing page fica pronta em 7 a 10 dias. Um site institucional leva de 2 a 4 semanas. Sistemas sob medida variam conforme o escopo e definimos o cronograma na conversa de descoberta.',
+          'Uma landing page fica pronta em até 7 dias. Um site institucional leva de 2 a 4 semanas. Sistemas sob medida variam conforme o escopo e definimos o cronograma na conversa de descoberta.',
       },
       {
         question: 'Quanto custa?',
         answer:
-          'Os valores de referência estão na seção de planos. O orçamento final depende do número de páginas, integrações e funcionalidades — e é fechado antes de começarmos, sem alteração no meio do projeto.',
+          'O valor é sempre sob consulta, calculado conforme o escopo do projeto: número de páginas, integrações e funcionalidades. Fechamos o orçamento antes de começar, sem alteração no meio do caminho. Fale com a gente pelo WhatsApp para uma proposta personalizada.',
       },
       {
         question: 'Domínio e hospedagem estão inclusos?',
         answer:
-          'Sim, o primeiro ano está incluso nos planos Essencial e Profissional. Configuramos tudo para você e o domínio fica registrado no seu nome, nunca no nosso.',
+          'Não, por padrão não estão inclusos. É possível publicar com hospedagem gratuita, sem custo adicional. Se você quiser um domínio próprio (como seusite.com.br) ou hospedagem premium, isso é opcional e cobrado à parte.',
       },
       {
         question: 'Eu consigo editar o site depois?',
         answer:
-          'Sim. Entregamos um painel de administração simples para você trocar textos, imagens e publicar posts sem depender de ninguém. E gravamos um treinamento em vídeo para o seu time.',
+          'Sim, você pode solicitar alterações depois do site pronto. Isso é feito através de um plano de manutenção mensal, que cobre atualizações de texto, imagens e pequenos ajustes.',
       },
       {
         question: 'Como funciona o pagamento?',
@@ -387,11 +326,6 @@ const en: Dictionary = {
     primaryCta: 'Start my project',
     secondaryCta: 'See our work',
     whatsappMessage: 'Hi! I found Nexa Agency online and would like to discuss a project.',
-    stats: [
-      { value: 120, suffix: '+', label: 'Projects delivered' },
-      { value: 98, suffix: '%', label: 'Happy clients' },
-      { value: 21, suffix: ' days', label: 'Average delivery' },
-    ],
     sideCard: {
       label: 'Available for new projects',
       title: 'Fully remote',
@@ -512,73 +446,44 @@ const en: Dictionary = {
   work: {
     eyebrow: 'Work',
     title: 'Projects that speak for themselves',
-    description:
-      'A sample of the kind of work we deliver. Want the full case studies with numbers? Just ask.',
-    resultLabel: 'Result',
+    description: 'A real project, designed and published by Nexa Agency.',
+    visitLabel: 'Visit website',
     cta: 'I want something like this',
     items: [
       {
-        name: 'Órbita Studio',
-        category: 'Marketing website',
-        result: '+68% time on page',
-      },
-      {
-        name: 'Vetor Contábil',
-        category: 'Landing page',
-        result: '3.4x more leads per month',
-      },
-      {
-        name: 'Casa Prisma',
-        category: 'Online store',
-        result: '+42% checkout conversion',
-      },
-      {
-        name: 'Meridiano CRM',
-        category: 'Web system',
-        result: '12h/week saved',
-      },
-      {
-        name: 'Nível Fitness',
-        category: 'App + integrations',
-        result: '9k bookings in year one',
-      },
-      {
-        name: 'Atlas Log',
-        category: 'Client portal',
-        result: '−55% support tickets',
+        name: 'Thaís Mello Decorações',
+        category: 'Interior decoration',
+        description: 'Website built to showcase the business and attract new clients.',
+        url: 'https://thaismellodecoracoes.vercel.app/',
       },
     ],
-    disclaimer: 'Illustrative projects shown as examples of our delivery standard.',
   },
 
   pricing: {
     eyebrow: 'Pricing',
     title: 'Transparent pricing, no fine print',
     description:
-      'Reference prices so you can plan ahead. The final quote comes after the discovery call — and it does not change midway.',
+      'Every project is unique, so pricing is always quoted after a conversation — no fixed table, no surprises along the way.',
     popular: 'Most chosen',
-    from: 'from',
     custom: 'on request',
     cta: 'I want this plan',
     whatsappMessage: 'Hi! I am interested in the plan',
-    note: 'Up to 12 monthly installments. First year of domain and hosting included in the Essential and Professional plans.',
+    note: 'Up to 12 monthly installments. We deploy with free hosting; a custom domain and premium hosting are optional, paid add-ons.',
     plans: [
       {
         name: 'Essential',
-        price: 'US$ 990',
         tagline: 'For those who need a solid web presence, fast.',
         features: [
           'Website with up to 5 pages',
           'Custom, responsive design',
           'Basic SEO optimization',
           'Contact form and WhatsApp built in',
-          'Deployment and domain setup',
+          'Deployment with free hosting',
           '30 days of support',
         ],
       },
       {
         name: 'Professional',
-        price: 'US$ 2,400',
         tagline: 'For businesses that use the website as a sales channel.',
         features: [
           'Website or store with unlimited pages',
@@ -592,7 +497,6 @@ const en: Dictionary = {
       },
       {
         name: 'Custom',
-        price: null,
         tagline: 'For systems, platforms and long-term products.',
         features: [
           'Full web system or platform',
@@ -606,31 +510,6 @@ const en: Dictionary = {
     ],
   },
 
-  testimonials: {
-    eyebrow: 'Testimonials',
-    title: 'What clients say',
-    items: [
-      {
-        quote:
-          'They delivered in three weeks what another agency failed to deliver in six months. The site is flawless and support is immediate.',
-        author: 'Renata Alves',
-        role: 'Partner, dental clinic',
-      },
-      {
-        quote:
-          'The landing page paid for itself in the first month. It is now where most of our quote requests come from.',
-        author: 'Diego Martins',
-        role: 'Sales director, manufacturing',
-      },
-      {
-        quote:
-          'They understood our process before writing any code. The system fit our team’s day-to-day perfectly.',
-        author: 'Camila Souza',
-        role: 'Operations manager, logistics',
-      },
-    ],
-  },
-
   faq: {
     eyebrow: 'FAQ',
     title: 'Frequently asked questions',
@@ -639,22 +518,22 @@ const en: Dictionary = {
       {
         question: 'How long does it take?',
         answer:
-          'A landing page takes 7 to 10 days. A marketing website takes 2 to 4 weeks. Custom systems vary with scope and we lock the timeline during the discovery call.',
+          'A landing page takes up to 7 days. A marketing website takes 2 to 4 weeks. Custom systems vary with scope and we lock the timeline during the discovery call.',
       },
       {
         question: 'How much does it cost?',
         answer:
-          'Reference prices are in the pricing section. The final quote depends on the number of pages, integrations and features — and it is agreed before we start, with no mid-project changes.',
+          'Pricing is always quoted after a conversation, based on the project scope: number of pages, integrations and features. We agree on the budget before we start, with no mid-project changes. Message us on WhatsApp for a personalized quote.',
       },
       {
         question: 'Are domain and hosting included?',
         answer:
-          'Yes, the first year is included in the Essential and Professional plans. We set everything up for you and the domain is registered in your name, never ours.',
+          'No, they are not included by default. We can deploy with free hosting at no extra cost. If you want a custom domain (like yoursite.com) or premium hosting, that is optional and charged separately.',
       },
       {
         question: 'Can I edit the website myself afterwards?',
         answer:
-          'Yes. We hand over a simple admin dashboard so you can change text, images and publish posts without depending on anyone. We also record a video walkthrough for your team.',
+          'Yes, you can request changes after launch. That is handled through a monthly maintenance plan, which covers text, image updates and small adjustments.',
       },
       {
         question: 'How does payment work?',

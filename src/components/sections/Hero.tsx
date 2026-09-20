@@ -3,12 +3,11 @@ import { ArrowRight, MapPin, Star } from 'lucide-react'
 import { ButtonExternal, ButtonLink } from '@/components/ui/Button'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { CornerArcs, GlowBackground } from '@/components/ui/GlowBackground'
-import { CountUp } from '@/components/ui/CountUp'
 import { Reveal } from '@/components/ui/Reveal'
 import { SocialLinks } from '@/components/ui/SocialLinks'
 import { WhatsAppIcon } from '@/components/ui/BrandIcons'
 import type { Dictionary } from '@/i18n/dictionaries'
-import { site, whatsappLink } from '@/config/site'
+import { instagramHandle, site, whatsappLink } from '@/config/site'
 
 export function Hero({ dict }: { dict: Dictionary }) {
   const { hero } = dict
@@ -56,19 +55,6 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   <ArrowRight aria-hidden className="size-4" />
                 </ButtonLink>
               </div>
-            </Reveal>
-
-            <Reveal delay={0.32}>
-              <dl className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {hero.stats.map((stat) => (
-                  <GlassCard key={stat.label} className="px-5 py-5">
-                    <dt className="text-xs tracking-wide text-muted">{stat.label}</dt>
-                    <dd className="mt-2 font-display text-3xl font-semibold text-ink">
-                      <CountUp to={stat.value} suffix={stat.suffix} />
-                    </dd>
-                  </GlassCard>
-                ))}
-              </dl>
             </Reveal>
           </div>
 
@@ -137,10 +123,12 @@ export function Hero({ dict }: { dict: Dictionary }) {
               <div className="flex items-center gap-4">
                 <SocialLinks label={hero.socialLabel} />
                 <a
-                  href={`mailto:${site.email}`}
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="truncate text-xs text-muted transition hover:text-cyan"
                 >
-                  {site.email}
+                  {instagramHandle()}
                 </a>
               </div>
             </Reveal>

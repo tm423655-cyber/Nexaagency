@@ -46,7 +46,14 @@ export function Work({ dict }: { dict: Dictionary }) {
         <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {work.items.map((item, index) => (
             <Reveal as="li" key={item.name} delay={(index % 3) * 0.08}>
-              <GlassCard interactive className="h-full overflow-hidden">
+              <GlassCard
+                as="a"
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                interactive
+                className="block h-full overflow-hidden"
+              >
                 <div
                   aria-hidden
                   className="relative flex h-44 items-center justify-center overflow-hidden border-b border-hairline"
@@ -61,19 +68,16 @@ export function Work({ dict }: { dict: Dictionary }) {
                 <div className="flex flex-col gap-3 p-6">
                   <p className="text-xs tracking-wide text-brand">{item.category}</p>
                   <h3 className="font-display text-lg font-semibold">{item.name}</h3>
-                  <p className="mt-1 border-t border-hairline pt-3 text-sm text-muted">
-                    <span className="text-muted/70">{work.resultLabel}: </span>
-                    <span className="text-ink">{item.result}</span>
-                  </p>
+                  <p className="text-sm text-muted">{item.description}</p>
+                  <span className="mt-1 inline-flex items-center gap-1.5 border-t border-hairline pt-3 text-sm text-cyan">
+                    {work.visitLabel}
+                    <ArrowUpRight aria-hidden className="size-3.5" />
+                  </span>
                 </div>
               </GlassCard>
             </Reveal>
           ))}
         </ul>
-
-        <Reveal delay={0.1}>
-          <p className="mt-8 text-xs text-muted/70">{work.disclaimer}</p>
-        </Reveal>
       </div>
     </section>
   )

@@ -8,7 +8,6 @@ import { Services } from '@/components/sections/Services'
 import { Process } from '@/components/sections/Process'
 import { Work } from '@/components/sections/Work'
 import { Pricing } from '@/components/sections/Pricing'
-import { Testimonials } from '@/components/sections/Testimonials'
 import { Faq } from '@/components/sections/Faq'
 import { CtaContact } from '@/components/sections/CtaContact'
 import { NoiseOverlay } from '@/components/ui/GlowBackground'
@@ -35,7 +34,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Process dict={dict} />
         <Work dict={dict} />
         <Pricing dict={dict} />
-        <Testimonials dict={dict} />
         <Faq dict={dict} />
         <CtaContact dict={dict} />
       </main>

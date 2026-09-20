@@ -44,3 +44,9 @@ export function locationLabel(): string {
   const { city, region } = site.location
   return city ? `${city} — ${region}` : region
 }
+
+/** "@usuario", derivado da URL do Instagram em site.social.instagram. */
+export function instagramHandle(): string {
+  const handle = site.social.instagram.split('/').filter(Boolean).pop()
+  return handle ? `@${handle}` : ''
+}

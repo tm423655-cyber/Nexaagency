@@ -44,17 +44,8 @@ export function Pricing({ dict }: { dict: Dictionary }) {
                     <p className="mt-2 text-sm text-muted">{plan.tagline}</p>
                   </div>
 
-                  <p className="font-display">
-                    {plan.price ? (
-                      <>
-                        <span className="block text-xs text-muted">{pricing.from}</span>
-                        <span className="text-4xl font-semibold text-ink">{plan.price}</span>
-                      </>
-                    ) : (
-                      <span className="text-4xl font-semibold text-gradient">
-                        {pricing.custom}
-                      </span>
-                    )}
+                  <p className="font-display text-4xl font-semibold text-gradient">
+                    {pricing.custom}
                   </p>
 
                   <ul className="flex flex-col gap-3 border-t border-hairline pt-6">

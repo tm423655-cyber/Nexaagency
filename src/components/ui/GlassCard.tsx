@@ -6,6 +6,10 @@ type GlassCardProps = {
   as?: ElementType
   /** Acende a borda superior em gradiente no hover. */
   interactive?: boolean
+  /** Use com as="a" para o card inteiro virar um link. */
+  href?: string
+  target?: string
+  rel?: string
 }
 
 /**
@@ -17,13 +21,16 @@ export function GlassCard({
   className = '',
   as: Tag = 'div',
   interactive = false,
+  href,
+  target,
+  rel,
 }: GlassCardProps) {
   const hover = interactive
     ? 'group relative overflow-hidden transition duration-400 ease-[var(--ease-out-soft)] hover:-translate-y-1 hover:border-cyan/25 hover:bg-white/[0.055]'
     : ''
 
   return (
-    <Tag className={`glass ${hover} ${className}`.trim()}>
+    <Tag href={href} target={target} rel={rel} className={`glass ${hover} ${className}`.trim()}>
       {interactive && (
         <span
           aria-hidden
