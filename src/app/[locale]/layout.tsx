@@ -109,6 +109,17 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQ2NM4XXBT" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-MQ2NM4XXBT');
+            `,
+          }}
+        />
         {/* Sem JavaScript as animacoes de entrada nunca rodam: o conteudo
             precisa aparecer assim mesmo. */}
         <noscript>
