@@ -99,7 +99,15 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound()
 
   return (
-    <html lang={htmlLang[locale]} suppressHydrationWarning>
+    // As variaveis das fontes precisam ficar no <html>: os tokens --font-display
+    // e --font-sans sao declarados em :root e uma custom property e resolvida
+    // onde e declarada. Com as classes no <body>, var(--font-sora) era invalido
+    // em :root e a tipografia inteira caia na fonte do sistema.
+    <html
+      lang={htmlLang[locale]}
+      className={`${sora.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Sem JavaScript as animacoes de entrada nunca rodam: o conteudo
             precisa aparecer assim mesmo. */}
@@ -107,7 +115,7 @@ export default async function LocaleLayout({
           <style>{'[data-reveal]{opacity:1!important;transform:none!important}'}</style>
         </noscript>
       </head>
-      <body className={`${sora.variable} ${inter.variable}`}>
+      <body>
         <script
           type="application/ld+json"
           // Conteudo proprio e estatico, gerado a partir de src/config/site.ts.
