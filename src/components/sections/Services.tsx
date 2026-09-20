@@ -22,7 +22,7 @@ export function Services({ dict }: { dict: Dictionary }) {
           {services.items.map((item, index) => (
             <Reveal as="li" key={item.title} delay={(index % 3) * 0.08}>
               <GlassCard interactive className="flex h-full flex-col gap-5 p-7">
-                <span className="font-display text-sm tracking-[0.2em] text-brand">
+                <span className="font-display text-sm tracking-[0.2em] text-cyan">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="font-display text-xl font-semibold">{item.title}</h3>

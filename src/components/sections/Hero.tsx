@@ -3,8 +3,6 @@ import { ArrowRight, MapPin, Star } from 'lucide-react'
 import { ButtonExternal, ButtonLink } from '@/components/ui/Button'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { CornerArcs } from '@/components/ui/GlowBackground'
-import { ShaderBackground } from '@/components/ui/bue-drift'
-import { Reveal } from '@/components/ui/Reveal'
 import { SocialLinks } from '@/components/ui/SocialLinks'
 import { WhatsAppIcon } from '@/components/ui/BrandIcons'
 import type { Dictionary } from '@/i18n/dictionaries'
@@ -16,11 +14,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
 
   return (
     <section id="inicio" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-      {/* Mesh de fundo em WebGL, na paleta da marca (ver bue-drift.tsx).
-          -z-20 para ficar atras dos arcos e da malha, que seguem por cima. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <ShaderBackground className="h-full w-full" />
-      </div>
+      <div aria-hidden className="hero-mesh pointer-events-none absolute inset-0 -z-20 overflow-hidden" />
       <CornerArcs />
       <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
 
@@ -32,28 +26,28 @@ export function Hero({ dict }: { dict: Dictionary }) {
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Coluna principal */}
           <div className="min-w-0 lg:col-span-7">
-            <Reveal>
+            <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur">
                 <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_10px_2px_var(--color-cyan)]" />
                 {hero.badge}
               </span>
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.08}>
+            <div>
               <h1 className="mt-7 text-[clamp(2.4rem,7.2vw,4.75rem)] leading-[1.02] font-semibold">
                 {hero.titleLead}{' '}
                 <span className="text-gradient">{hero.titleAccent}</span>{' '}
                 {hero.titleTail}
               </h1>
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.16}>
+            <div>
               <p className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg">
                 {hero.description}
               </p>
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.24}>
+            <div>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <ButtonExternal href={ctaHref} size="lg">
                   <WhatsAppIcon className="size-5" />
@@ -64,12 +58,12 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   <ArrowRight aria-hidden className="size-4" />
                 </ButtonLink>
               </div>
-            </Reveal>
+            </div>
           </div>
 
           {/* Coluna lateral */}
           <div className="min-w-0 flex flex-col gap-4 lg:col-span-5">
-            <Reveal delay={0.2}>
+            <div>
               <GlassCard className="relative overflow-hidden p-6">
                 <div
                   aria-hidden
@@ -91,7 +85,8 @@ export function Hero({ dict }: { dict: Dictionary }) {
                     alt=""
                     width={220}
                     height={220}
-                    priority
+                    sizes="(min-width: 768px) 192px, 160px"
+                    preload
                     className="w-40 md:w-48"
                   />
                 </div>
@@ -113,9 +108,9 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   </ButtonExternal>
                 </div>
               </GlassCard>
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.3}>
+            <div>
               <GlassCard className="flex items-center justify-between gap-5 p-6">
                 <div>
                   <div className="flex gap-0.5" aria-hidden>
@@ -128,9 +123,9 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 </div>
                 <p className="font-display text-5xl font-semibold text-gradient">5.0</p>
               </GlassCard>
-            </Reveal>
+            </div>
 
-            <Reveal delay={0.38}>
+            <div>
               <div className="flex items-center gap-4">
                 <SocialLinks label={hero.socialLabel} />
                 <a
@@ -142,7 +137,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   {instagramHandle()}
                 </a>
               </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>

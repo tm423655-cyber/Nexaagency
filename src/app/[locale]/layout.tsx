@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 import { Inter, Sora } from 'next/font/google'
-import { MotionProvider } from '@/components/MotionProvider'
+import { RevealObserver } from '@/components/RevealObserver'
 import { htmlLang, isLocale, locales, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import { site } from '@/config/site'
@@ -109,27 +109,18 @@ export default async function LocaleLayout({
       className={`${sora.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        {/* Sem JavaScript as animacoes de entrada nunca rodam: o conteudo
-            precisa aparecer assim mesmo. */}
-        <noscript>
-          <style>{'[data-reveal]{opacity:1!important;transform:none!important}'}</style>
-        </noscript>
-      </head>
       <body>
         <script
           type="application/ld+json"
           // Conteudo proprio e estatico, gerado a partir de src/config/site.ts.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(locale)) }}
         />
-        {/* strategy="afterInteractive": o Next adia o carregamento do GTM
-            para depois da hidratacao, entao a analytics nao compete com o
-            trabalho critico da thread principal durante o carregamento. */}
+        {/* Analytics loads during browser idle time after the page load. */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MQ2NM4XXBT"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -137,7 +128,8 @@ export default async function LocaleLayout({
             gtag('config', 'G-MQ2NM4XXBT');
           `}
         </Script>
-        <MotionProvider>{children}</MotionProvider>
+        {children}
+        <RevealObserver />
       </body>
     </html>
   )

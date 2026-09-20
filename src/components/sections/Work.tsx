@@ -66,7 +66,7 @@ export function Work({ dict }: { dict: Dictionary }) {
                 </div>
 
                 <div className="flex flex-col gap-3 p-6">
-                  <p className="text-xs tracking-wide text-brand">{item.category}</p>
+                  <p className="text-xs tracking-wide text-cyan">{item.category}</p>
                   <h3 className="font-display text-lg font-semibold">{item.name}</h3>
                   <p className="text-sm text-muted">{item.description}</p>
                   <span className="mt-1 inline-flex items-center gap-1.5 border-t border-hairline pt-3 text-sm text-cyan">
