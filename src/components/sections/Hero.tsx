@@ -25,9 +25,13 @@ export function Hero({ dict }: { dict: Dictionary }) {
       <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
 
       <div className="shell">
+        {/* min-w-0 nas duas colunas: sem isso, o botao "Agendar conversa"
+            (nowrap) forca a trilha do grid a crescer alem do container em
+            telas estreitas, e a secao so nao ganha scroll horizontal porque
+            overflow-hidden acima corta o excesso — o card fica cortado. */}
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Coluna principal */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <Reveal>
               <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-muted backdrop-blur">
                 <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_10px_2px_var(--color-cyan)]" />
@@ -64,7 +68,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           </div>
 
           {/* Coluna lateral */}
-          <div className="flex flex-col gap-4 lg:col-span-5">
+          <div className="min-w-0 flex flex-col gap-4 lg:col-span-5">
             <Reveal delay={0.2}>
               <GlassCard className="relative overflow-hidden p-6">
                 <div
@@ -92,7 +96,9 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   />
                 </div>
 
-                <div className="relative mt-6 flex items-end justify-between gap-4">
+                {/* Empilha abaixo de sm: texto + botao lado a lado nao cabem
+                    no card em telas estreitas (botao usa whitespace-nowrap). */}
+                <div className="relative mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <p className="inline-flex items-center gap-1.5 text-xs text-muted">
                       <MapPin aria-hidden className="size-3.5" />
@@ -131,7 +137,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   href={site.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="truncate text-xs text-muted transition hover:text-cyan"
+                  className="inline-flex h-10 min-w-0 items-center truncate text-xs text-muted transition hover:text-cyan"
                 >
                   {instagramHandle()}
                 </a>
