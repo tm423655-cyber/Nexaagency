@@ -11,19 +11,19 @@ export const site = {
   url: 'https://nexaagency.com.br', // TODO: seu dominio
 
   /** Numero do WhatsApp no formato internacional, so digitos: 55 + DDD + numero. */
-  whatsapp: '5511999999999', // TODO: seu WhatsApp
+  whatsapp: '5516992881883',
   /** E-mail de contato exibido no rodape e na secao de contato. */
-  email: 'contato@nexaagency.com.br', // TODO: seu e-mail
+  email: 'nexaagencycontact1@gmail.com',
 
   social: {
-    instagram: 'https://instagram.com/nexaagency', // TODO: seu Instagram
-    linkedin: 'https://linkedin.com/company/nexaagency', // TODO: ou deixe '' para ocultar
-    facebook: '', // opcional — deixe '' para ocultar
+    instagram: 'https://instagram.com/nexaa_agency1',
+    linkedin: '', // opcional — preencha para exibir o icone do LinkedIn
+    facebook: '', // opcional — preencha para exibir o icone do Facebook
   },
 
-  /** Cidade/regiao exibida no site e no JSON-LD. */
+  /** Cidade/regiao exibida no rodape e no JSON-LD. */
   location: {
-    city: 'São Paulo',
+    city: '', // TODO: sua cidade — deixe '' e so o estado aparece
     region: 'SP',
     country: 'BR',
   },
@@ -37,4 +37,10 @@ export function whatsappLink(message: string): string {
 /** Monta o link de e-mail com assunto preenchido. */
 export function mailtoLink(subject: string): string {
   return `mailto:${site.email}?subject=${encodeURIComponent(subject)}`
+}
+
+/** "Cidade — UF", ou so a UF enquanto a cidade nao estiver preenchida. */
+export function locationLabel(): string {
+  const { city, region } = site.location
+  return city ? `${city} — ${region}` : region
 }

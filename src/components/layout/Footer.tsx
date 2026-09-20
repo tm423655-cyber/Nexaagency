@@ -5,7 +5,7 @@ import { WhatsAppIcon } from '@/components/ui/BrandIcons'
 import { navItems } from './nav-items'
 import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
-import { site, whatsappLink } from '@/config/site'
+import { locationLabel, site, whatsappLink } from '@/config/site'
 
 /** Formata o numero do WhatsApp para leitura: +55 (11) 99999-9999 */
 function formatPhone(raw: string) {
@@ -93,7 +93,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </li>
               <li className="inline-flex items-center gap-2.5 text-muted">
                 <MapPin aria-hidden className="size-4 shrink-0" />
-                {site.location.city} — {site.location.region}
+                {locationLabel()}
               </li>
             </ul>
           </div>

@@ -82,7 +82,8 @@ function jsonLd(locale: Locale) {
     areaServed: site.location.country,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: site.location.city,
+      // A cidade so entra no schema quando estiver preenchida.
+      ...(site.location.city ? { addressLocality: site.location.city } : {}),
       addressRegion: site.location.region,
       addressCountry: site.location.country,
     },
