@@ -6,7 +6,11 @@
  * Entrada:  public/nexa-logo-full.png  (mockup quadrado 1254x1254 entregue pelo cliente)
  * Saida:    public/nexa-logo.png       (lockup completo: monograma + NEXA AGENCY)
  *           public/nexa-mark.png       (somente o monograma "N", para favicon/OG)
- *           src/app/icon.png           (favicon servido pelo App Router)
+ *           src/app/icon.png           (favicon do navegador, 192x192 — multiplo de
+ *                                       48px, o tamanho que o Google recomenda para
+ *                                       exibir o icone do site nos resultados de busca)
+ *           src/app/apple-icon.png     (icone para adicionar a tela de inicio no iOS —
+ *                                       a Apple recomenda fundo solido, sem transparencia)
  *
  * Rode de novo sempre que o arquivo original da logo for substituido.
  */
@@ -57,7 +61,30 @@ async function write(target, pipeline) {
 // compartilhamento (OG), onde a transparencia atrapalharia.
 await write('public/nexa-logo.png', sharp(source).extract(crops.lockup))
 await write('public/nexa-mark.png', await toTransparent(crops.mark))
+
+// Favicon do navegador (e o que o Google costuma buscar): 192x192, multiplo
+// de 48px. Fundo transparente fica bem tanto em aba clara quanto escura.
 await write(
   'src/app/icon.png',
-  (await toTransparent(crops.mark)).resize(256, 256, { fit: 'contain' }),
+  (await toTransparent(crops.mark)).resize(192, 192, { fit: 'contain' }),
+)
+
+// Icone da tela de inicio no iOS: a Apple achata a transparencia de forma
+// inconsistente, entao compomos o monograma sobre o fundo escuro do site
+// (--color-void) antes de exportar, num quadrado solido de 180x180.
+await write(
+  'src/app/apple-icon.png',
+  sharp({
+    create: { width: 180, height: 180, channels: 4, background: '#01040B' },
+  }).composite([
+    {
+      // .png() e obrigatorio aqui: toTransparent() devolve pixels crus, e
+      // composite() so aceita um buffer que seja um arquivo de imagem valido.
+      input: await (await toTransparent(crops.mark))
+        .resize(140, 140, { fit: 'contain' })
+        .png()
+        .toBuffer(),
+      gravity: 'center',
+    },
+  ]),
 )

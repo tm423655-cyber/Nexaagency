@@ -7,8 +7,12 @@
  */
 export const site = {
   name: 'Nexa Agency',
-  /** Dominio final do site. Usado em metadata, sitemap e robots. */
-  url: 'https://nexaagency.com.br', // TODO: seu dominio
+  /**
+   * Dominio do site, sem barra final e sem idioma no caminho — o resto do
+   * codigo ja completa com /pt ou /en (ver [locale]/layout.tsx, sitemap.ts).
+   * Hoje aponta para o deploy na Vercel; troque quando tiver dominio proprio.
+   */
+  url: 'https://nexaagency-web.vercel.app',
 
   /** Numero do WhatsApp no formato internacional, so digitos: 55 + DDD + numero. */
   whatsapp: '5516992881883',
