@@ -176,50 +176,23 @@ const pt = {
     title: 'Preço transparente, sem letra miúda',
     description:
       'Cada projeto é único, por isso o valor é sempre calculado sob consulta — sem tabela fixa, sem surpresa no meio do caminho.',
-    popular: 'Mais escolhido',
     custom: 'sob consulta',
-    cta: 'Quero este plano',
-    whatsappMessage: 'Olá! Tenho interesse no plano',
+    cta: 'Falar sobre meu projeto',
+    whatsappMessage: 'Olá! Quero um orçamento para o meu projeto.',
     note: 'Parcelamos em até 12x. Publicamos com hospedagem gratuita; domínio próprio e hospedagem premium são opcionais, cobrados à parte.',
-    plans: [
-      {
-        name: 'Essencial',
-        tagline: 'Para quem precisa existir bem na internet, rápido.',
-        features: [
-          'Site de até 5 páginas',
-          'Design exclusivo e responsivo',
-          'Otimização básica de SEO',
-          'Formulário e WhatsApp integrados',
-          'Publicação com hospedagem gratuita',
-          '30 dias de suporte',
-        ],
-      },
-      {
-        name: 'Profissional',
-        tagline: 'Para negócios que usam o site como canal de vendas.',
-        features: [
-          'Site ou loja com páginas ilimitadas',
-          'Protótipo completo no Figma',
-          'Copywriting orientado a conversão',
-          'Blog e painel de administração',
-          'SEO técnico e Core Web Vitals',
-          'Integrações (CRM, pagamentos, analytics)',
-          '90 dias de suporte',
-        ],
-      },
-      {
-        name: 'Sob medida',
-        tagline: 'Para sistemas, plataformas e projetos de longo prazo.',
-        features: [
-          'Sistema web ou plataforma completa',
-          'Arquitetura e banco de dados próprios',
-          'Área de cliente e múltiplos perfis',
-          'Integrações e APIs dedicadas',
-          'Squad alocado e sprints quinzenais',
-          'Contrato de manutenção contínua',
-        ],
-      },
-    ],
+    plan: {
+      name: 'Sites e sistemas sob medida',
+      tagline:
+        'Do site institucional ao sistema mais completo — o escopo é seu, o orçamento é sempre fechado antes de começar.',
+      features: [
+        'Site, loja ou sistema sob medida',
+        'Design exclusivo e responsivo',
+        'Protótipo completo no Figma',
+        'SEO técnico e performance',
+        'Integrações (CRM, pagamentos, analytics)',
+        'Suporte pós-lançamento',
+      ],
+    },
   },
 
   faq: {
@@ -464,50 +437,23 @@ const en: Dictionary = {
     title: 'Transparent pricing, no fine print',
     description:
       'Every project is unique, so pricing is always quoted after a conversation — no fixed table, no surprises along the way.',
-    popular: 'Most chosen',
     custom: 'on request',
-    cta: 'I want this plan',
-    whatsappMessage: 'Hi! I am interested in the plan',
+    cta: 'Talk about my project',
+    whatsappMessage: 'Hi! I would like a quote for my project.',
     note: 'Up to 12 monthly installments. We deploy with free hosting; a custom domain and premium hosting are optional, paid add-ons.',
-    plans: [
-      {
-        name: 'Essential',
-        tagline: 'For those who need a solid web presence, fast.',
-        features: [
-          'Website with up to 5 pages',
-          'Custom, responsive design',
-          'Basic SEO optimization',
-          'Contact form and WhatsApp built in',
-          'Deployment with free hosting',
-          '30 days of support',
-        ],
-      },
-      {
-        name: 'Professional',
-        tagline: 'For businesses that use the website as a sales channel.',
-        features: [
-          'Website or store with unlimited pages',
-          'Full Figma prototype',
-          'Conversion-driven copywriting',
-          'Blog and admin dashboard',
-          'Technical SEO and Core Web Vitals',
-          'Integrations (CRM, payments, analytics)',
-          '90 days of support',
-        ],
-      },
-      {
-        name: 'Custom',
-        tagline: 'For systems, platforms and long-term products.',
-        features: [
-          'Full web system or platform',
-          'Dedicated architecture and database',
-          'Client area with multiple roles',
-          'Dedicated integrations and APIs',
-          'Assigned squad and bi-weekly sprints',
-          'Ongoing maintenance contract',
-        ],
-      },
-    ],
+    plan: {
+      name: 'Custom websites and systems',
+      tagline:
+        'From a marketing website to a full-blown system — the scope is yours, the budget is always agreed before we start.',
+      features: [
+        'Custom website, store or system',
+        'Custom, responsive design',
+        'Full Figma prototype',
+        'Technical SEO and performance',
+        'Integrations (CRM, payments, analytics)',
+        'Post-launch support',
+      ],
+    },
   },
 
   faq: {

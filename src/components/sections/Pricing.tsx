@@ -7,8 +7,13 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import type { Dictionary } from '@/i18n/dictionaries'
 import { whatsappLink } from '@/config/site'
 
+/**
+ * Oferta unica: o preco e sempre "sob consulta", entao um unico card
+ * evita repetir o mesmo valor em tres cartoes quase identicos.
+ */
 export function Pricing({ dict }: { dict: Dictionary }) {
   const { pricing } = dict
+  const { plan } = pricing
 
   return (
     <section id="planos" className="relative overflow-hidden py-24 md:py-32">
@@ -22,56 +27,37 @@ export function Pricing({ dict }: { dict: Dictionary }) {
           align="center"
         />
 
-        <ul className="mt-14 grid items-start gap-4 lg:grid-cols-3">
-          {pricing.plans.map((plan, index) => {
-            const featured = index === 1
-
-            return (
-              <Reveal as="li" key={plan.name} delay={index * 0.1}>
-                <GlassCard
-                  className={`relative flex h-full flex-col gap-7 p-8 ${
-                    featured ? 'border-brand/45 bg-white/[0.06] lg:scale-[1.03]' : ''
-                  }`}
+        <Reveal delay={0.1} className="mx-auto mt-14 max-w-3xl">
+          <GlassCard interactive className="overflow-hidden p-8 md:p-10">
+            <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
+              <div className="flex flex-col">
+                <h3 className="font-display text-2xl font-semibold">{plan.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{plan.tagline}</p>
+                <p className="mt-8 font-display text-5xl font-semibold text-gradient">
+                  {pricing.custom}
+                </p>
+                <ButtonExternal
+                  href={whatsappLink(pricing.whatsappMessage)}
+                  size="lg"
+                  className="mt-8 w-full md:w-auto"
                 >
-                  {featured && (
-                    <span className="absolute -top-3 left-8 rounded-full bg-gradient-brand px-3 py-1 text-xs font-medium text-white">
-                      {pricing.popular}
-                    </span>
-                  )}
+                  {pricing.cta}
+                </ButtonExternal>
+              </div>
 
-                  <div>
-                    <h3 className="font-display text-xl font-semibold">{plan.name}</h3>
-                    <p className="mt-2 text-sm text-muted">{plan.tagline}</p>
-                  </div>
+              <ul className="flex flex-col gap-3 border-t border-hairline pt-6 md:border-t-0 md:border-l md:pt-0 md:pl-10">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-sm text-muted">
+                    <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-cyan" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </GlassCard>
+        </Reveal>
 
-                  <p className="font-display text-4xl font-semibold text-gradient">
-                    {pricing.custom}
-                  </p>
-
-                  <ul className="flex flex-col gap-3 border-t border-hairline pt-6">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm text-muted">
-                        <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-cyan" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <ButtonExternal
-                    href={whatsappLink(`${pricing.whatsappMessage} ${plan.name}.`)}
-                    variant={featured ? 'primary' : 'secondary'}
-                    size="lg"
-                    className="mt-auto w-full"
-                  >
-                    {pricing.cta}
-                  </ButtonExternal>
-                </GlassCard>
-              </Reveal>
-            )
-          })}
-        </ul>
-
-        <Reveal delay={0.1}>
+        <Reveal delay={0.18}>
           <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted/80">
             {pricing.note}
           </p>
