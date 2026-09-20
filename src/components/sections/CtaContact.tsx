@@ -2,7 +2,7 @@ import { Mail } from 'lucide-react'
 import { ButtonExternal } from '@/components/ui/Button'
 import { Reveal } from '@/components/ui/Reveal'
 import { InstagramIcon, WhatsAppIcon } from '@/components/ui/BrandIcons'
-import { ShaderBackground } from '@/components/ui/bue-drift'
+import { GlowBackground } from '@/components/ui/GlowBackground'
 import type { Dictionary } from '@/i18n/dictionaries'
 import { mailtoLink, site, whatsappLink } from '@/config/site'
 
@@ -11,10 +11,11 @@ export function CtaContact({ dict }: { dict: Dictionary }) {
 
   return (
     <section id="contato" className="relative overflow-hidden py-24 md:py-32">
-      {/* Mesmo mesh de fundo do hero (ver bue-drift.tsx), na cor da marca. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <ShaderBackground className="h-full w-full" />
-      </div>
+      {/* Halo estatico em CSS em vez do shader WebGL do hero: essa secao fica
+          fora da viewport inicial e um segundo canvas animado so custava
+          tempo de thread principal (compilacao de shader + loop de rAF)
+          sem ganho perceptivel, ja que raramente esta visivel junto do hero. */}
+      <GlowBackground />
       <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
 
       <div className="shell">

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Script from 'next/script'
 import { Inter, Sora } from 'next/font/google'
 import { MotionProvider } from '@/components/MotionProvider'
 import { htmlLang, isLocale, locales, type Locale } from '@/i18n/config'
@@ -109,17 +110,6 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQ2NM4XXBT" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-MQ2NM4XXBT');
-            `,
-          }}
-        />
         {/* Sem JavaScript as animacoes de entrada nunca rodam: o conteudo
             precisa aparecer assim mesmo. */}
         <noscript>
@@ -132,6 +122,21 @@ export default async function LocaleLayout({
           // Conteudo proprio e estatico, gerado a partir de src/config/site.ts.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(locale)) }}
         />
+        {/* strategy="afterInteractive": o Next adia o carregamento do GTM
+            para depois da hidratacao, entao a analytics nao compete com o
+            trabalho critico da thread principal durante o carregamento. */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-MQ2NM4XXBT"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MQ2NM4XXBT');
+          `}
+        </Script>
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
