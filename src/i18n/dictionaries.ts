@@ -158,7 +158,7 @@ const pt = {
   work: {
     eyebrow: 'Projetos',
     title: 'Trabalhos que falam por si',
-    description: 'Confira um projeto real, desenvolvido e publicado pela Nexa Agency.',
+    description: 'Confira projetos reais, desenvolvidos e publicados pela Nexa Agency.',
     visitLabel: 'Visitar site',
     cta: 'Quero um projeto assim',
     items: [
@@ -167,6 +167,12 @@ const pt = {
         category: 'Decoração de interiores',
         description: 'Site para divulgar o trabalho e atrair novos clientes.',
         url: 'https://thaismellodecoracoes.vercel.app/',
+      },
+      {
+        name: 'Rosinha Campos Buquês',
+        category: 'Floricultura',
+        description: 'Site para apresentar os buquês e atrair novos clientes.',
+        url: 'https://rosinhacamposbuques.vercel.app/',
       },
     ],
   },
@@ -419,7 +425,7 @@ const en: Dictionary = {
   work: {
     eyebrow: 'Work',
     title: 'Projects that speak for themselves',
-    description: 'A real project, designed and published by Nexa Agency.',
+    description: 'Real projects, designed and published by Nexa Agency.',
     visitLabel: 'Visit website',
     cta: 'I want something like this',
     items: [
@@ -428,6 +434,12 @@ const en: Dictionary = {
         category: 'Interior decoration',
         description: 'Website built to showcase the business and attract new clients.',
         url: 'https://thaismellodecoracoes.vercel.app/',
+      },
+      {
+        name: 'Rosinha Campos Buquês',
+        category: 'Florist',
+        description: 'Website built to showcase the bouquets and attract new clients.',
+        url: 'https://rosinhacamposbuques.vercel.app/',
       },
     ],
   },
