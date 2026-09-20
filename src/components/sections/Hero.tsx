@@ -2,7 +2,8 @@ import Image from 'next/image'
 import { ArrowRight, MapPin, Star } from 'lucide-react'
 import { ButtonExternal, ButtonLink } from '@/components/ui/Button'
 import { GlassCard } from '@/components/ui/GlassCard'
-import { CornerArcs, GlowBackground } from '@/components/ui/GlowBackground'
+import { CornerArcs } from '@/components/ui/GlowBackground'
+import { ShaderBackground } from '@/components/ui/bue-drift'
 import { Reveal } from '@/components/ui/Reveal'
 import { SocialLinks } from '@/components/ui/SocialLinks'
 import { WhatsAppIcon } from '@/components/ui/BrandIcons'
@@ -15,7 +16,11 @@ export function Hero({ dict }: { dict: Dictionary }) {
 
   return (
     <section id="inicio" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-      <GlowBackground />
+      {/* Mesh de fundo em WebGL, na paleta da marca (ver bue-drift.tsx).
+          -z-20 para ficar atras dos arcos e da malha, que seguem por cima. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+        <ShaderBackground className="h-full w-full" />
+      </div>
       <CornerArcs />
       <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
 
