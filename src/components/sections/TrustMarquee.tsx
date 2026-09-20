@@ -39,7 +39,7 @@ export function TrustMarquee({ dict }: { dict: Dictionary }) {
               {stack.map((name) => (
                 <li
                   key={name}
-                  className="font-display text-lg whitespace-nowrap text-muted/60 transition-colors md:text-xl"
+                  className="font-display text-lg whitespace-nowrap text-muted transition-colors md:text-xl"
                 >
                   {name}
                 </li>
