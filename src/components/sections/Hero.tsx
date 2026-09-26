@@ -13,7 +13,10 @@ export function Hero({ dict }: { dict: Dictionary }) {
   const ctaHref = whatsappLink(hero.whatsappMessage)
 
   return (
-    <section id="inicio" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+    // Abaixo do md os respiros, o titulo e a coluna lateral encolhem: com
+    // tudo empilhado numa coluna, as medidas do desktop fariam o hero ocupar
+    // mais de duas telas de celular.
+    <section id="inicio" className="relative overflow-hidden pt-24 pb-14 md:pt-40 md:pb-28">
       <div aria-hidden className="hero-mesh pointer-events-none absolute inset-0 -z-20 overflow-hidden" />
       <CornerArcs />
       <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
@@ -23,7 +26,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
             (nowrap) forca a trilha do grid a crescer alem do container em
             telas estreitas, e a secao so nao ganha scroll horizontal porque
             overflow-hidden acima corta o excesso — o card fica cortado. */}
-        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="grid items-start gap-8 md:gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Coluna principal */}
           <div className="min-w-0 lg:col-span-7">
             <div>
@@ -34,7 +37,9 @@ export function Hero({ dict }: { dict: Dictionary }) {
             </div>
 
             <div>
-              <h1 className="mt-7 text-[clamp(2.4rem,7.2vw,4.75rem)] leading-[1.02] font-semibold">
+              {/* No celular a fonte acompanha a largura da tela: assim o titulo
+                  em portugues cabe em 3 linhas de 360px a 430px. */}
+              <h1 className="mt-5 text-[clamp(2rem,8.6vw,3rem)] leading-[1.02] font-semibold md:mt-7 md:text-[clamp(2.4rem,7.2vw,4.75rem)]">
                 {hero.titleLead}{' '}
                 <span className="text-gradient">{hero.titleAccent}</span>{' '}
                 {hero.titleTail}
@@ -42,13 +47,13 @@ export function Hero({ dict }: { dict: Dictionary }) {
             </div>
 
             <div>
-              <p className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+              <p className="mt-5 max-w-xl text-[0.9375rem] leading-relaxed text-muted md:mt-7 md:text-lg">
                 {hero.description}
               </p>
             </div>
 
             <div>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-9">
                 <ButtonExternal href={ctaHref} size="lg">
                   <WhatsAppIcon className="size-5" />
                   {hero.primaryCta}
@@ -64,7 +69,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           {/* Coluna lateral */}
           <div className="min-w-0 flex flex-col gap-4 lg:col-span-5">
             <div>
-              <GlassCard className="relative overflow-hidden p-6">
+              <GlassCard className="relative overflow-hidden p-5 md:p-6">
                 <div
                   aria-hidden
                   className="absolute -top-24 -right-16 size-56 rounded-full bg-brand/30 blur-[70px]"
@@ -79,21 +84,26 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   </span>
                 </div>
 
-                <div className="relative mt-6 flex justify-center">
+                {/* So do md para cima: no celular o header ja mostra a logo e o
+                    monograma grande aqui quase dobraria a altura do card. Sem
+                    preload (fica lazy) para o celular nem baixar a imagem
+                    escondida; o LCP do hero e o h1, nao ela. */}
+                <div className="relative mt-6 hidden justify-center md:flex">
                   <Image
                     src="/nexa-mark.png"
                     alt=""
                     width={220}
                     height={220}
-                    sizes="(min-width: 768px) 192px, 160px"
-                    preload
-                    className="w-40 md:w-48"
+                    sizes="192px"
+                    className="w-48"
                   />
                 </div>
 
-                {/* Empilha abaixo de sm: texto + botao lado a lado nao cabem
-                    no card em telas estreitas (botao usa whitespace-nowrap). */}
-                <div className="relative mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
+                {/* Abaixo de sm o botao sai: nao cabe ao lado do texto (usa
+                    whitespace-nowrap) e, empilhado, so repetiria o CTA de
+                    WhatsApp que esta logo acima. Envolvido num span pelo mesmo
+                    motivo do Header: o Button ja define display. */}
+                <div className="relative mt-4 flex items-end justify-between gap-3 md:mt-6">
                   <div>
                     <p className="inline-flex items-center gap-1.5 text-xs text-muted">
                       <MapPin aria-hidden className="size-3.5" />
@@ -103,15 +113,17 @@ export function Hero({ dict }: { dict: Dictionary }) {
                       {hero.sideCard.title}
                     </p>
                   </div>
-                  <ButtonExternal href={ctaHref} variant="secondary">
-                    {hero.sideCard.cta}
-                  </ButtonExternal>
+                  <span className="hidden sm:block">
+                    <ButtonExternal href={ctaHref} variant="secondary">
+                      {hero.sideCard.cta}
+                    </ButtonExternal>
+                  </span>
                 </div>
               </GlassCard>
             </div>
 
             <div>
-              <GlassCard className="flex items-center justify-between gap-5 p-6">
+              <GlassCard className="flex items-center justify-between gap-5 p-5 md:p-6">
                 <div>
                   <div className="flex gap-0.5" aria-hidden>
                     {Array.from({ length: 5 }).map((_, index) => (
